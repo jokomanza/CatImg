@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
-import com.yuyakaido.android.cardstackview.CardStackLayoutManager
-import com.yuyakaido.android.cardstackview.CardStackListener
-import com.yuyakaido.android.cardstackview.CardStackView
-import com.yuyakaido.android.cardstackview.Direction
+import com.yuyakaido.android.cardstackview.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +23,9 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         cardStackView = findViewById<CardStackView>(R.id.card_stack_view)
         cardStackView.layoutManager = manager
         cardStackView.adapter = adapter
+        manager.setStackFrom(StackFrom.Bottom)
+        manager.setVisibleCount(3)
+        manager.setSwipeThreshold(0.3f)
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
