@@ -17,11 +17,13 @@ class MainActivity : AppCompatActivity(), CardStackListener {
 
     lateinit var cardStackView: CardStackView
     private val manager by lazy { CardStackLayoutManager(this, this) }
-    private val adapter by lazy { CardStackAdapter(listOf(Cat(1, "Cat1", "https://i.thatcopy.pw/cat/s3KROPn.jpg"))) }
+    private val adapter by lazy { CardStackAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        fetchCat()
 
         cardStackView = findViewById<CardStackView>(R.id.card_stack_view)
         cardStackView.layoutManager = manager
