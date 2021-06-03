@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CatImg</string>
+    <string name="quotes"><font color='black'>Here are some cure picture,\nHopefully you </font><font color='#f18d46'>enjoyed!</font></string>
 </resources>
