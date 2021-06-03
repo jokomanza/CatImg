@@ -1,8 +1,11 @@
 package com.jokosupriyanto.catimg
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import com.yuyakaido.android.cardstackview.*
@@ -26,6 +29,15 @@ class MainActivity : AppCompatActivity(), CardStackListener {
         manager.setStackFrom(StackFrom.Bottom)
         manager.setVisibleCount(3)
         manager.setSwipeThreshold(0.3f)
+
+        openGithub()
+    }
+
+    private fun openGithub() {
+        findViewById<ImageView>(R.id.imgOpenGithub)!!.setOnClickListener {
+            val uri = Uri.parse("https://github.com/jokomanza")
+            startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW, uri), "Open with"))
+        }
     }
 
     override fun onCardDisappeared(view: View?, position: Int) {
