@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class CardStackAdapter(
-    private var spots: List<Cat> = emptyList()
+    private var cats: List<Cat> = emptyList()
 ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,13 +20,13 @@ class CardStackAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val spot = spots[position]
+        val spot = cats[position]
         holder.name.text = "${spot.id}. ${spot.url}"
         holder.city.text = spot.url
         Glide.with(holder.image)
             .load(spot.url)
-            .placeholder(R.drawable.ic_launcher_foreground)
-            .error(R.drawable.ic_github)
+            .placeholder(R.drawable.ic_three_dots)
+            .error(R.drawable.nopic)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(holder.image)
         holder.itemView.setOnClickListener { v ->
@@ -35,15 +35,15 @@ class CardStackAdapter(
     }
 
     override fun getItemCount(): Int {
-        return spots.size
+        return cats.size
     }
 
     fun setSpots(spots: List<Cat>) {
-        this.spots = spots
+        this.cats = spots
     }
 
     fun getSpots(): List<Cat> {
-        return spots
+        return cats
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
